@@ -1,0 +1,46 @@
+{
+  "//": "СОРТАМЕНТ: Трубы прямоугольные - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "manufacturing_method: горячедеформированные, холоднодеформированные, электросварные",
+  "//": "delivery_condition: термически обработанные или без термической обработки",
+  "//": "group_index: В - с нормированием механических свойств и химического состава",
+
+  "product_name": "Труба",
+  "group_index": "В",
+  "standard": "ГОСТ 8645-82",
+  "material_standard": "ГОСТ 13663-86",
+
+  "designation_components": {
+    "numerator": "{height}*{width}*{wall} {standard}",
+    "denominator": "{group_index} {material} {material_standard}"
+  },
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "materials": {
+    "20": {
+      "sizes_mm": [
+        {"height": "25", "width": "15", "wall": "1,5"},
+        {"height": "35", "width": "20", "wall": "3"},
+        {"height": "40", "width": "25", "wall": "3,5"},
+        {"height": "45", "width": "30", "wall": "4"},
+        {"height": "50", "width": "30", "wall": "2"},
+        {"height": "60", "width": "30", "wall": "3"},
+        {"height": "60", "width": "40", "wall": "3"},
+        {"height": "80", "width": "40", "wall": "3"}
+      ]
+    },
+    "10": {
+      "sizes_mm": [
+        {"height": "25", "width": "15", "wall": "1,5"},
+        {"height": "35", "width": "20", "wall": "3"},
+        {"height": "40", "width": "25", "wall": "3,5"}
+      ]
+    },
+    "Ст3сп": {
+      "sizes_mm": [
+        {"height": "45", "width": "30", "wall": "4"},
+        {"height": "50", "width": "30", "wall": "2"},
+        {"height": "60", "width": "40", "wall": "3"}
+      ]
+    }
+  }
+}

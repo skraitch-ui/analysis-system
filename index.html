@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система анализа чертежей</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏗️</text></svg>">
+    <style>
+        /* === ОСНОВНЫЕ СТИЛИ === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0 30px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* === ШАГИ ФОРМЫ === */
+        .step {
+            margin: 25px 0;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .step:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .step h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step h3:before {
+            content: "➤";
+            color: #3498db;
+        }
+
+        /* === ВЫПАДАЮЩИЕ СПИСКИ === */
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            color: #333;
+            transition: all 0.3s;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        select:hover {
+            border-color: #3498db;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        select:disabled {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+            border-color: #dee2e6;
+        }
+
+        /* === ГРУППЫ ПАРАМЕТРОВ === */
+        .param-group {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007cba;
+        }
+
+        .param-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 15px;
+        }
+
+        .param-group select {
+            background-color: white;
+        }
+
+        /* === РЕЗУЛЬТАТ === */
+        .designation {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #e3e3e3;
+            font-family: 'Courier New', 'Consolas', monospace;
+            font-size: 18px;
+            line-height: 1.8;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 12px;
+            vertical-align: middle;
+        }
+
+        .numerator {
+            border-bottom: 2px solid #7f8c8d;
+            padding: 0 20px 8px;
+            text-align: center;
+            font-weight: bold;
+            min-width: 200px;
+        }
+
+        .denominator {
+            padding: 8px 20px 0;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .full-designation {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f4fc;
+            border-radius: 6px;
+            font-size: 14px;
+            border-left: 4px solid #3498db;
+        }
+
+        .full-designation strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* === КНОПКИ === */
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+            width: 100%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .generate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .copy-btn:hover {
+            background: linear-gradient(135deg, #27ae60 0%, #219653 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        /* === СООБЩЕНИЯ И ОШИБКИ === */
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* === ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМА === */
+        .mode-switcher {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .mode-option {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: white;
+        }
+
+        .mode-option:hover {
+            border-color: #3498db;
+            background: #f8fafc;
+        }
+
+        .mode-option.active {
+            border-color: #3498db;
+            background: #e8f4fc;
+        }
+
+        .mode-radio {
+            accent-color: #3498db;
+            transform: scale(1.2);
+            margin-right: 8px;
+        }
+
+        .mode-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .mode-title {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .mode-description {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin: 15px 0;
+            }
+
+            .step {
+                margin: 15px 0;
+                padding: 20px;
+            }
+
+            .step h3 {
+                font-size: 1.2rem;
+            }
+
+            .designation {
+                font-size: 16px;
+                padding: 20px;
+            }
+
+            .numerator, .denominator {
+                min-width: 150px;
+                padding: 0 15px 5px;
+            }
+
+            select {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+
+            .generate-btn, .copy-btn {
+                width: 100%;
+                margin: 10px 0;
+                padding: 14px 20px;
+            }
+
+            .mode-switcher {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .designation {
+                font-size: 15px;
+            }
+
+            .fraction {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .numerator, .denominator {
+                display: block;
+                min-width: auto;
+                border-bottom: none;
+                padding: 5px 0;
+            }
+
+            .numerator:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: #7f8c8d;
+                margin: 5px 0;
+            }
+        }
+
+        /* === АНИМАЦИИ === */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .designation {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* === ФУТЕР === */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- ЗАГОЛОВОК -->
+    <header>
+        <h1>🏗️ СИСТЕМА АНАЛИЗА ЧЕРТЕЖЕЙ</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Автоматический подбор заготовок и материалов по ГОСТ
+        </p>
+    </header>
+
+    <!-- ШАГ 0: РЕЖИМ ВЫБОРА -->
+    <div class="step" style="background: #f8f9fa;">
+        <h3>🎯 Режим выбора:</h3>
+        <div class="mode-switcher">
+            <div class="mode-option active" id="modeMaterial">
+                <label class="mode-label">
+                    <input type="radio" name="mode" value="material_first" class="mode-radio" checked>
+                    <div>
+                        <span class="mode-title">От материала</span>
+                        <span class="mode-description">Знаю из чего делать → выбираю что</span>
+                    </div>
+                </label>
+            </div>
+            <div class="mode-option" id="modeSort">
+                <label class="mode-label">
+                    <input type="radio" name="mode" value="sort_first" class="mode-radio">
+                    <div>
+                        <span class="mode-title">От сортамента</span>
+                        <span class="mode-description">Знаю что нужно → выбираю из чего</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ШАГ 1: ВЫБОР МАТЕРИАЛА -->
+    <div class="step" id="materialStep">
+        <h3>1. Выбери материал:</h3>
+        <select id="materialSelect">
+            <option value="">-- Выбери материал --</option>
+        </select>
+        <div id="materialError" class="error" style="display: none;"></div>
+    </div>
+
+    <!-- ШАГ 2: ВЫБОР СОРТАМЕНТА -->
+    <div class="step" id="sortStep">
+        <h3>2. Выбери сортамент:</h3>
+        <select id="sortSelect" disabled>
+            <option value="">-- Сначала выбери материал --</option>
+        </select>
+    </div>
+
+    <!-- ШАГ 3: ПАРАМЕТРЫ -->
+    <div class="step" id="paramsContainer" style="display: none;">
+        <h3>3. Выбери параметры:</h3>
+        <div id="paramsContent">
+            <!-- Здесь динамически появятся параметры выбранного сортамента -->
+        </div>
+    </div>
+
+    <!-- ШАГ 4: РЕЗУЛЬТАТ -->
+    <div class="step" id="resultContainer" style="display: none;">
+        <h3>📝 Результат:</h3>
+        <div id="result" class="designation">
+            <!-- Здесь появится сгенерированное обозначение -->
+        </div>
+        <button id="copyButton" class="copy-btn">
+            📋 Скопировать обозначение
+        </button>
+    </div>
+
+    <!-- ИНФОРМАЦИЯ О СИСТЕМЕ -->
+    <div class="step" style="background: #f0f7ff; border-color: #c3d9ff;">
+        <h3 style="border-color: #4d94ff;">ℹ️ О системе</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+            <div>
+                <strong>📊 Реализовано:</strong>
+                <ul style="margin: 8px 0 0 20px; font-size: 14px;">
+                    <li>60 материалов чёрных металлов</li>
+                    <li>25+ сортаментов проката</li>
+                    <li>Генерация обозначений по ГОСТ</li>
+                    <li>Автоматический подбор параметров</li>
+                </ul>
+            </div>
+            <div>
+                <strong>🚀 В разработке:</strong>
+                <ul style="margin: 8px 0 0 20px; font-size: 14px;">
+                    <li>Цветные металлы</li>
+                    <li>Спецификация материалов</li>
+                    <li>Объединение деталей + припуски</li>
+                    <li>Интеграция со складом</li>
+                    <li>AI-анализ</li>
+                    <li>Расчёт стоимости</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ФУТЕР -->
+    <div class="footer">
+        <p>Система анализа чертежей v1.0 | Последнее обновление: декабрь 2025</p>
+        <p>Разработчик: Александр Калинин (п.0040)</p>
+            </div>
+
+    <!-- === ЗАГРУЗКА JavaScript === -->
+    <!-- 1. Загрузчик данных -->
+    <script src="./js/core/data-loader.js"></script>
+
+    <!-- 2. Модули ядра (В ПРАВИЛЬНОМ ПОРЯДКЕ!) -->
+    <script src="./js/core/modules/selection-mode.js"></script>
+    <script src="./js/core/modules/material-logic.js"></script>
+    <script src="./js/core/modules/ui-helpers.js"></script>
+    <script src="./js/core/modules/clipboard.js"></script>
+    <script src="./js/core/app-core.js"></script>
+
+    <!-- 3. Модули сортаментов -->
+    <script src="./js/sorts/round-bar.js"></script>
+    <script src="./js/sorts/sheet.js"></script>
+    <script src="./js/sorts/plate.js"></script>
+    <script src="./js/sorts/tube-round.js"></script>
+    <script src="./js/sorts/angle.js"></script>
+    <script src="./js/sorts/hex_bar.js"></script>
+    <script src="./js/sorts/square_bar.js"></script>
+    <script src="./js/sorts/wire.js"></script>
+    <script src="./js/sorts/strip.js"></script>
+    <script src="./js/sorts/tube_square.js"></script>
+    <script src="./js/sorts/tube_rectangular.js"></script>
+    <script src="./js/sorts/angle_bent.js"></script>
+    <script src="./js/sorts/channel.js"></script>
+    <script src="./js/sorts/channel_bent.js"></script>
+    <script src="./js/sorts/beam.js"></script>
+    <script src="./js/sorts/tape.js"></script>
+    <script src="./js/sorts/mesh.js"></script>
+    <script src="./js/sorts/ribbed_sheet.js"></script>
+    <script src="./js/sorts/strip_spring.js"></script>
+    <script src="./js/sorts/round_bar_finished.js"></script>
+    <script src="./js/sorts/round_bar_forged.js"></script>
+    <script src="./js/sorts/tube_wgp.js"></script>
+    <script src="./js/sorts/sheet_ptk.js"></script>
+    <script src="./js/sorts/foundry_alloys.js"></script>
+    <script src="./js/sorts/sintered_alloys.js"></script>
+
+    <!-- 4. Главный файл -->
+    <script src="./js/main.js"></script>
+
+    <!-- 5. ИНИЦИАЛИЗАЦИЯ ИНТЕРФЕЙСА -->
+    <script>
+        // Простая инициализация интерфейса при загрузке
+        document.addEventListener('DOMContentLoaded', function() {;
+
+            // Настройка кнопки копирования (резервный вариант)
+            const copyButton = document.getElementById('copyButton');
+            if (copyButton) {
+                copyButton.addEventListener('click', function() {
+                    if (typeof window.copyToClipboard === 'function') {
+                        window.copyToClipboard();
+                    } else {
+                        alert('Модуль копирования не загружен. Попробуйте позже.');
+                    }
+                });
+            }
+
+            // Настройка переключателя режима (резервный вариант)
+            const modeRadios = document.querySelectorAll('input[name="mode"]');
+            if (modeRadios.length > 0) {
+                modeRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (typeof window.changeMode === 'function') {
+                            window.changeMode(this.value);
+                        } else {
+                            console.log('Система загружается, подождите...');
+                        }
+                    });
+                });
+            }
+
+            // Подсветка активного режима
+            document.querySelectorAll('.mode-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) {
+                        radio.checked = true;
+                        document.querySelectorAll('.mode-option').forEach(o => o.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Вызываем changeMode если функция доступна
+                        if (typeof window.changeMode === 'function') {
+                            window.changeMode(radio.value);
+                        }
+                    }
+                });
+            });
+
+            console.log('✅ Модули сортаментов загружены, интерфейс инициализирован');
+        });
+    </script>
+</body>
+</html>

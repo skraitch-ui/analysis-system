@@ -1,0 +1,57 @@
+{
+  "//": "СОРТАМЕНТ: Пруток круглый со специальной отделкой поверхности - МАЛЫЕ ДИАМЕТРЫ",
+  "//": "quality_classes - группы качества поверхности: А (высшее), Б (Повышенная), Группа В (Обычная)",
+  "//": "accuracy_classes - квалитеты точности для каждого материала",
+
+  "product_name": "Пруток",
+  "standard": "ГОСТ 14955-77",
+  "example_designation": "Пруток {diameter}-{quality}-{accuracy}-{material} {standard}",
+
+  "materials": {
+    "У8А": {
+      "diameters": ["1,55", "2,1", "2,6", "3,1", "3,6", "4,1", "5,1", "5,5", "6,1", "6,6", "8", "10", "12"],
+      "quality_classes": ["Б"],
+      "accuracy_classes": ["h9"]
+    },
+    "У10А": {
+      "diameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      "quality_classes": ["Б"],
+      "accuracy_classes": ["h9"]
+    },
+    "30ХГСА": {
+      "diameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      "quality_classes": ["Б"],
+      "accuracy_classes": ["h9"]
+    },
+    "40Х": {
+      "diameters": ["1,1", "2,1", "3,1", "4", "4,1", "5", "5,1", "6", "6,1", "8", "8,1", "10"],
+      "quality_classes": ["Б"],
+      "accuracy_classes": ["h9"]
+    },
+    "30Х13": {
+      "diameters": ["2", "2,5", "3", "5", "6"],
+      "quality_classes": ["А"],
+      "accuracy_classes": ["h8"]
+    },
+    "12Х18Н10Т": {
+      "diameters": ["2", "2,5", "3", "3,5", "4", "5", "6", "7", "8"],
+      "quality_classes": ["Б"],
+      "accuracy_classes": ["h9"]
+    },
+    "Р18": {
+      "diameters": ["2", "2,5", "3", "3,5", "4", "4,5", "5", "5,5", "6", "6,5", "7"],
+      "quality_classes": ["В"],
+      "accuracy_classes": ["h10"]
+    },
+    "Р9К5": {
+      "diameters": ["3", "4", "5", "5,5", "6", "7"],
+      "quality_classes": ["В"],
+      "accuracy_classes": ["h10"]
+    },
+    "Р6М5": {
+      "diameters": ["3", "4", "5", "6", "7"],
+      "quality_classes": ["В"],
+      "accuracy_classes": ["h10"]
+    }
+  }
+}

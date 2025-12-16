@@ -1,0 +1,21 @@
+{
+  "//": "СОРТАМЕНТ: Пруток круглый кованый - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "Кованый прокат имеет большие диаметры и повышенные механические свойства",
+  "//": "Используется для ответственных деталей, работающих при ударных нагрузках",
+  "product_name": "Круг",
+  "standard": "ГОСТ 1133-71",
+
+  "designation_components": {
+    "numerator": "{diameter} {standard}",
+    "denominator": "{material} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "materials": {
+    "7Х3": {
+      "diameters_mm": ["70", "100", "150"],
+      "delivery_condition": "термически обработанный"
+    }
+  }
+}

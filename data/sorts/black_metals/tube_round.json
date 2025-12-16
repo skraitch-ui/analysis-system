@@ -1,0 +1,128 @@
+{
+  "//": "СОРТАМЕНТ: Трубы круглые бесшовные - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "ГОСТ 8734-75 - холоднодеформированные, ГОСТ 8732-78 - теплодеформированные",
+  "//": "ГОСТ 9941-81 - трубы коррозионно-стойкие, жаропрочные",
+  "//": "ГОСТ 14162-79 - трубки холоднодеформированные из коррозионно-стойкой стали",
+  "//": "delivery_condition: термически обработанные, нагартованные (для холоднодеформированных)",
+
+  "product_name": "Труба",
+
+  "size_product_map": {
+    "3*1": {"product_name": "Трубка", "standard": "ГОСТ 14162-79"},
+    "4*1": {"product_name": "Трубка", "standard": "ГОСТ 14162-79"},
+    "4*1,6": {"product_name": "Трубка", "standard": "ГОСТ 14162-79"},
+    "default": {"product_name": "Труба", "standard": "ГОСТ 9941-81"}
+  },
+
+  "materials": {
+    "10": {
+      "//": "Трубы холоднодеформированные - термически обработанные или нагартованные",
+      "sizes_mm": [
+        {"diameter": "6", "wall": "1"},
+        {"diameter": "8", "wall": "1"},
+        {"diameter": "10", "wall": "1"},
+        {"diameter": "12", "wall": "1"},
+        {"diameter": "16", "wall": "2"},
+        {"diameter": "18", "wall": "2"},
+        {"diameter": "20", "wall": "1"},
+        {"diameter": "20", "wall": "2"}
+      ],
+      "standard": "ГОСТ 8734-75",
+      "material_standard": "ГОСТ 8733-74",
+      "designation_components": {
+        "numerator": "{diameter}*{wall} {standard}",
+        "denominator": "{material} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "20": {
+      "//": "Трубы теплодеформированные - без термической обработки",
+      "sizes_mm": [
+        {"diameter": "22", "wall": "3"},
+        {"diameter": "25", "wall": "5"},
+        {"diameter": "28", "wall": "3"},
+        {"diameter": "28", "wall": "4"},
+        {"diameter": "30", "wall": "5"},
+        {"diameter": "32", "wall": "3"},
+        {"diameter": "36", "wall": "3"},
+        {"diameter": "40", "wall": "5"},
+        {"diameter": "40", "wall": "8"},
+        {"diameter": "50", "wall": "3"},
+        {"diameter": "60", "wall": "4"},
+        {"diameter": "70", "wall": "8"},
+        {"diameter": "70", "wall": "3"},
+        {"diameter": "89", "wall": "4"},
+        {"diameter": "102", "wall": "4"},
+        {"diameter": "102", "wall": "10"},
+        {"diameter": "121", "wall": "5"},
+        {"diameter": "121", "wall": "12"},
+        {"diameter": "140", "wall": "6"},
+        {"diameter": "140", "wall": "14"},
+        {"diameter": "159", "wall": "6"},
+        {"diameter": "159", "wall": "14"},
+        {"diameter": "180", "wall": "6"},
+        {"diameter": "180", "wall": "16"},
+        {"diameter": "203", "wall": "6"},
+        {"diameter": "203", "wall": "16"},
+        {"diameter": "245", "wall": "8"},
+        {"diameter": "245", "wall": "22"},
+        {"diameter": "325", "wall": "8"},
+        {"diameter": "325", "wall": "22"}
+      ],
+      "standard": "ГОСТ 8734-75",
+      "material_standard": "ГОСТ 8733-74",
+      "designation_components": {
+        "numerator": "{diameter}*{wall} {standard}",
+        "denominator": "{material} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "12Х18Н10Т": {
+      "//": "Трубы/трубки коррозионно-стойкие - product_name определяется автоматически по размеру",
+      "sizes_mm": [
+        {"diameter": "3", "wall": "1"},
+        {"diameter": "4", "wall": "1"},
+        {"diameter": "4", "wall": "1,6"},
+        {"diameter": "6", "wall": "1"},
+        {"diameter": "6", "wall": "1,5"},
+        {"diameter": "8", "wall": "1"},
+        {"diameter": "12", "wall": "1"},
+        {"diameter": "12", "wall": "1,5"},
+        {"diameter": "14", "wall": "1,5"},
+        {"diameter": "16", "wall": "1,5"},
+        {"diameter": "16", "wall": "3"},
+        {"diameter": "20", "wall": "2"},
+        {"diameter": "20", "wall": "4"},
+        {"diameter": "22", "wall": "3"},
+        {"diameter": "24", "wall": "2"},
+        {"diameter": "27", "wall": "3"},
+        {"diameter": "32", "wall": "3"},
+        {"diameter": "38", "wall": "4"},
+        {"diameter": "45", "wall": "2,5"},
+        {"diameter": "53", "wall": "3"},
+        {"diameter": "57", "wall": "3"},
+        {"diameter": "63", "wall": "3"},
+        {"diameter": "70", "wall": "8"},
+        {"diameter": "89", "wall": "3"},
+        {"diameter": "90", "wall": "4"},
+        {"diameter": "90", "wall": "8,5"},
+        {"diameter": "100", "wall": "4"},
+        {"diameter": "100", "wall": "10"},
+        {"diameter": "120", "wall": "5"},
+        {"diameter": "120", "wall": "12"},
+        {"diameter": "140", "wall": "6"},
+        {"diameter": "140", "wall": "14"},
+        {"diameter": "160", "wall": "6"},
+        {"diameter": "160", "wall": "14"},
+        {"diameter": "180", "wall": "6"},
+        {"diameter": "180", "wall": "16"},
+        {"diameter": "200", "wall": "6"},
+        {"diameter": "200", "wall": "16"},
+        {"diameter": "250", "wall": "8"},
+        {"diameter": "250", "wall": "22"}
+      ],
+      "standard": "ГОСТ 9941-81",
+      "example_designation": "{product_name} {diameter}*{wall}-12Х18Н10Т {standard}"
+    }
+  }
+}

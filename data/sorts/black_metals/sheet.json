@@ -1,0 +1,108 @@
+{
+  "//": "СОРТАМЕНТ: Лист тонколистовой - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "groups - группы отделки поверхности: I (особо высокая), II (высокая), 3 (повышенная), IV (обычная), М2а (травленая или после светлого отжига)",
+  "//": "accuracy_classes - точность изготовления: А (повышенная), Б (нормальная), БТ (нормальная по толщине)",
+  "//": "delivery_method - способ изготовления: горячекатаный, холоднокатаный",
+  "//": "delivery_condition - состояние поставки: без термической обработки, термически обработанный",
+
+  "product_name": "Лист",
+
+  "designation_components": {
+    "numerator": "{accuracy}-{thickness} {standard}",
+    "denominator": "{material}{group_suffix} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "standard_logic": {
+    "горячекатаный": "ГОСТ 19903-2015",
+    "холоднокатаный": "ГОСТ 19904-90"
+  },
+
+  "material_standard_logic": {
+    "Ст3сп": "ГОСТ 16523-97",
+    "10": "ГОСТ 16523-97",
+    "20": "ГОСТ 16523-97",
+    "45": "ГОСТ 16523-97",
+    "У8А": "ТУ 14-1-776-73",
+    "У10А": "ТУ 14-1-776-73",
+    "12Х18Н10Т": "ГОСТ 5582-75",
+    "10880": "ГОСТ 3836-83"
+  },
+
+  "groups": ["I", "II", "3", "IV", "М2a"],
+  "accuracy_classes": ["А", "Б", "БТ"],
+
+  "group_suffix_logic": {
+    "Ст3сп": "-ОК360В-IV",
+    "10": "-К270В-II",
+    "20": "-К350В-II",
+    "45": "-К490В-II",
+    "У8А": "-3",
+    "У10А": "-3",
+    "12Х18Н10Т": "-М2a",
+    "10880": ""
+  },
+
+  "group_position_logic": {
+    "10": "before",
+    "20": "before",
+    "45": "before",
+    "Ст3сп": "after",
+    "У8А": "after",
+    "У10А": "after",
+    "12Х18Н10Т": "after",
+    "10880": "none"
+  },
+
+  "materials": {
+    "Ст3сп": {
+      "thicknesses_mm": ["2", "2,5", "3", "3,5"],
+      "delivery_method": "горячекатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["Б"]
+    },
+    "10": {
+      "thicknesses_mm": ["0,5", "0,8", "1", "1,5", "2", "3"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "20": {
+      "thicknesses_mm": ["3"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "45": {
+      "thicknesses_mm": ["1", "1,2", "1,5", "2", "2,5", "3", "3,5", "3,9"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "У8А": {
+      "thicknesses_mm": ["1", "1,2", "1,5", "2", "2,5", "3", "3,5", "3,9", "4"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "У10А": {
+      "thicknesses_mm": ["1", "1,2", "1,5", "2", "2,5", "3", "3,5", "4"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "12Х18Н10Т": {
+      "thicknesses_mm": ["0,5", "0,8", "1", "1,2", "1,5", "2", "2,5", "3"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "термически обработанный",
+      "accuracy_classes": ["БТ"]
+    },
+    "10880": {
+      "thicknesses_mm": ["3,9"],
+      "delivery_method": "холоднокатаный",
+      "delivery_condition": "без термической обработки",
+      "accuracy_classes": ["БТ"]
+    }
+  }
+}
