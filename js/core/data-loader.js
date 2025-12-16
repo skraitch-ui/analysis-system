@@ -5,29 +5,6 @@ let blackMetals = {};
 let indexData = {};
 let currentSortData = {};
 
-// ТЕСТОВЫЕ ДАННЫЕ
-const testBlackMetals = {
-  "Ст3сп": {
-    "наименование": "Сталь Ст3сп",
-    "material_standard": "ГОСТ 535-2005",
-    "default_sort_types": ["round_bar", "sheet", "plate", "tube_round"]
-  },
-  "45": {
-    "наименование": "Сталь 45",
-    "material_standard": "ГОСТ 1050-2013",
-    "default_sort_types": ["round_bar", "hex_bar", "square_bar", "tube_round"]
-  }
-};
-
-const testIndexData = {
-  "sort_types": {
-    "round_bar": "Пруток круглый",
-    "sheet": "Лист",
-    "plate": "Лист толстый",
-    "tube_round": "Труба круглая"
-  }
-};
-
 // ОСНОВНЫЕ ФУНКЦИИ
 
 /**
@@ -35,7 +12,8 @@ const testIndexData = {
  */
 window.loadSortData = function(sortType) {
     return new Promise((resolve, reject) => {
-        const filePath = `../data/sorts/black_metals/${sortType}.json`;
+        // ИСПРАВЛЕННЫЙ ПУТЬ: убрали ../
+        const filePath = `data/sorts/black_metals/${sortType}.json`;
 
         fetch(filePath)
             .then(response => {
@@ -65,6 +43,7 @@ window.loadSortData = function(sortType) {
             });
     });
 };
+
 
 /**
  * ИСПОЛЬЗОВАНИЕ ТЕСТОВЫХ ДАННЫХ
