@@ -1,11 +1,6 @@
 ﻿// data-loader.js - ЗАГРУЗЧИК ДАННЫХ
 
-// ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-let blackMetals = {};
-let indexData = {};
-let currentSortData = {};
-
-// ТЕСТОВЫЕ ДАННЫЕ
+// ТЕСТОВЫЕ ДАННЫЕ - ДОБАВЬ ЕСЛИ НЕТ!
 const testBlackMetals = {
   "Ст3сп": {
     "наименование": "Сталь Ст3сп",
@@ -27,6 +22,11 @@ const testIndexData = {
     "tube_round": "Труба круглая"
   }
 };
+
+// ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+let blackMetals = {};
+let indexData = {};
+let currentSortData = {};
 
 // ОСНОВНЫЕ ФУНКЦИИ
 
@@ -151,8 +151,9 @@ function loadRealMaterials() {
  * ИСПОЛЬЗОВАНИЕ ТЕСТОВЫХ МАТЕРИАЛОВ
  */
 function useTestMaterials() {
-    blackMetals = testBlackMetals;
-    indexData = testIndexData;
+    // ИСПРАВЛЕННЫЕ СТРОКИ:
+    blackMetals = testBlackMetals || {};
+    indexData = testIndexData || {};
 
     window.blackMetals = blackMetals;
     window.indexData = indexData;
