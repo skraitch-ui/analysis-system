@@ -1,4 +1,4 @@
-// data-loader.js - ЗАГРУЗЧИК ДАННЫХ
+﻿// data-loader.js - ЗАГРУЗЧИК ДАННЫХ
 
 // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
 let blackMetals = {};
@@ -35,7 +35,7 @@ const testIndexData = {
  */
 window.loadSortData = function(sortType) {
     return new Promise((resolve, reject) => {
-        const filePath = `../data/sorts/black_metals/${sortType}.json`;
+        const filePath = `data/sorts/black_metals/${sortType}.json`;
 
         fetch(filePath)
             .then(response => {
@@ -123,7 +123,7 @@ function useTestDataForSortament(sortType) {
  * ЗАГРУЗКА РЕАЛЬНЫХ МАТЕРИАЛОВ
  */
 function loadRealMaterials() {
-    const filePath = '../data/materials/black_metals.json';
+    const filePath = 'data/materials/black_metals.json';
 
     fetch(filePath)
         .then(response => {
@@ -221,7 +221,7 @@ function fillMaterialSelect() {
  * ОСНОВНАЯ ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ
  */
 function initializeSystem() {
-    const indexPath = '../data/materials/index.json';
+    const indexPath = 'data/materials/index.json';
 
     fetch(indexPath)
         .then(response => {
