@@ -459,3 +459,4 @@ if (typeof window.rebuildInterfaceForMode !== 'function') {
         }
     };
 }
+

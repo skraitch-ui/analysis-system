@@ -250,3 +250,4 @@ document.addEventListener('DOMContentLoaded', initializeSystem);
 window.loadSortData = loadSortData;
 window.fillMaterialSelect = fillMaterialSelect;
 window.showDefaultParameters = showDefaultParameters;
+
