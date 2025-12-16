@@ -1,0 +1,79 @@
+{
+  "//": "СОРТАМЕНТ: Пруток калиброванный шестигранный - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "ОТОЖЖЁННЫЙ: ГОСТ 8560-78, обозначение: Шестигранник {size}-{accuracy} ГОСТ 8560-78/{material}-Т ГОСТ 1051-73",
+  "//": "ТЕРМООБРАБОТАННЫЙ: ГОСТ 2879-2006, обозначение: Шестигранник {accuracy}-{size} ГОСТ 2879-78/{material}-ТО ГОСТ 1050-2013",
+
+  "product_name": "Шестигранник",
+
+  "designation_components": {
+    "numerator": "{size}-{accuracy} {standard}",
+    "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "heat_treatment_logic": {
+    "отожжённый": "-Т",
+    "термически обработанный": "-ТО"
+  },
+
+  "standard_logic": {
+    "отожжённый": "ГОСТ 8560-78",
+    "термически обработанный": "ГОСТ 2879-2006"
+  },
+
+  "material_standard_logic": {
+    "отожжённый": "ГОСТ 1051-73",
+    "термически обработанный": "ГОСТ 1050-2013"
+  },
+
+  "materials": {
+    "20": {
+      "sizes_mm": ["10"],
+      "delivery_condition": "отожжённый",
+      "accuracy_classes": ["h12"]
+    },
+    "35": {
+      "sizes_mm": ["14", "17", "19", "22", "24", "27", "32", "36"],
+      "delivery_condition": "отожжённый",
+      "accuracy_classes": ["h12"]
+    },
+    "45": {
+      "sizes_mm": ["5", "5,5", "6", "7", "8", "10", "12", "14", "17", "19", "22", "24", "27", "30", "32", "36", "38", "41", "42", "46"],
+      "delivery_condition": "разное",
+      "size_delivery_map": {
+        "5": {"delivery_condition": "отожжённый"},
+        "5,5": {"delivery_condition": "отожжённый"},
+        "6": {"delivery_condition": "отожжённый"},
+        "7": {"delivery_condition": "отожжённый"},
+        "8": {"delivery_condition": "отожжённый"},
+        "41": {"delivery_condition": "отожжённый"},
+        "10": {"delivery_condition": "термически обработанный"},
+        "12": {"delivery_condition": "термически обработанный"},
+        "14": {"delivery_condition": "термически обработанный"},
+        "17": {"delivery_condition": "термически обработанный"},
+        "19": {"delivery_condition": "термически обработанный"},
+        "22": {"delivery_condition": "термически обработанный"},
+        "24": {"delivery_condition": "термически обработанный"},
+        "27": {"delivery_condition": "термически обработанный"},
+        "30": {"delivery_condition": "термически обработанный"},
+        "32": {"delivery_condition": "термически обработанный"},
+        "36": {"delivery_condition": "термически обработанный"},
+        "38": {"delivery_condition": "термически обработанный"},
+        "42": {"delivery_condition": "термически обработанный"},
+        "46": {"delivery_condition": "термически обработанный"}
+      },
+      "accuracy_classes": ["h12"]
+    },
+    "У8А": {
+      "sizes_mm": ["6", "8", "10", "12", "14"],
+      "delivery_condition": "отожжённый",
+      "accuracy_classes": ["h12"]
+    },
+    "12Х18Н10Т": {
+      "sizes_mm": ["5", "5,5", "7", "14", "27", "30", "32", "36", "41", "46"],
+      "delivery_condition": "отожжённый",
+      "accuracy_classes": ["h12"]
+    }
+  }
+}

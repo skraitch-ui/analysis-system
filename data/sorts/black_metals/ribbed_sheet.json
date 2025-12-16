@@ -1,0 +1,22 @@
+{
+  "//": "СОРТАМЕНТ: Лист рифлёный ромбический - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "accuracy_classes - точность прокатки: В (нормальная)",
+  "//": "delivery_method - способ изготовления: горячекатаный",
+  "//": "pattern - тип рифления: ромб (К)",
+
+  "product_name": "Лист ромб",
+  "standard": "ГОСТ 8568-77",
+  "accuracy_classes": ["В"],
+  "delivery_method": "горячекатаный",
+  "pattern": "ромб",
+  "pattern_code": "К",
+
+  "example_designation": "Лист ромб {accuracy}-{pattern_code}-{thickness} {material} {standard}",
+
+  "materials": {
+    "Ст3сп": {
+      "thicknesses_mm": ["4"],
+      "accuracy_classes": ["В"]
+    }
+  }
+}

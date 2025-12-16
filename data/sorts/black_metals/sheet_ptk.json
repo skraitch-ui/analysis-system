@@ -1,0 +1,25 @@
+{
+  "//": "СОРТАМЕНТ: Лист тонколистовой холоднокатаный - Группа ПТК-1",
+
+  "product_name": "Лист",
+  "standard": "ГОСТ 19904-90",
+  "material_standard": "ТУ 14-11-262-89",
+  "accuracy_classes": ["БТ"],
+
+  "designation_components": {
+    "numerator": "{accuracy}-{thickness}×{width}×{length} {standard}",
+    "denominator": "{group} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "materials": {
+    "ПТК-1": {
+      "thicknesses_mm": ["0,5", "0,8"],
+      "widths_mm": ["700"],
+      "lengths_mm": ["1420"],
+      "accuracy_classes": ["БТ"],
+      "group": "ПТК-1"
+    }
+  }
+}

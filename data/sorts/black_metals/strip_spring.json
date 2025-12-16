@@ -1,0 +1,36 @@
+{
+  "//": "СОРТАМЕНТ: Полоса рессорная горячекатаная - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "accuracy_classes - точность прокатки: В (обычная)",
+  "//": "delivery_method - способ изготовления: горячекатаный",
+
+  "product_name": "Полоса",
+  "standard": "ГОСТ 7419-90",
+  "accuracy_classes": ["В"],
+  "delivery_method": "горячекатаный",
+
+  "designation_components": {
+    "numerator": "{accuracy}-{thickness}х{width} {standard}",
+    "denominator": "{material} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "material_standard_logic": {
+    "60С2А": "ГОСТ 14959-2016"
+  },
+
+  "materials": {
+    "60С2А": {
+      "sizes_mm": [
+        {"thickness": "4,5", "width": "45"},
+        {"thickness": "7", "width": "70"},
+        {"thickness": "7,5", "width": "75"},
+        {"thickness": "10", "width": "130"},
+        {"thickness": "12", "width": "130"},
+        {"thickness": "14", "width": "130"},
+        {"thickness": "14", "width": "150"}
+      ],
+      "accuracy_classes": ["В"]
+    }
+  }
+}

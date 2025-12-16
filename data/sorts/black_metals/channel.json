@@ -1,0 +1,35 @@
+{
+  "//": "СОРТАМЕНТ: Швеллер стальной горячекатаный - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "series: П - с параллельными гранями полок",
+  "//": "quality_category: 5 - категория проката",
+
+  "product_name": "Швеллер",
+  "quality_category": "5",
+  "standard": "ГОСТ 8240-97",
+  "material_standard": "ГОСТ 535-2005",
+
+  "designation_components": {
+    "numerator": "{number} {standard}",
+    "denominator": "{material}{quality_category} {material_standard}"
+  },
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "materials": {
+    "Ст3сп": {
+      "sizes_mm": [
+        {"number": "5П", "height": "50", "width": "32", "thickness": "4,4", "shelf_thickness": "7,0"},
+        {"number": "6,5П", "height": "65", "width": "36", "thickness": "4,4", "shelf_thickness": "7,2"},
+        {"number": "8П", "height": "80", "width": "40", "thickness": "4,5", "shelf_thickness": "7,4"},
+        {"number": "10П", "height": "100", "width": "46", "thickness": "4,5", "shelf_thickness": "7,6"},
+        {"number": "12П", "height": "120", "width": "52", "thickness": "4,8", "shelf_thickness": "7,8"},
+        {"number": "14П", "height": "140", "width": "58", "thickness": "4,9", "shelf_thickness": "8,1"},
+        {"number": "16П", "height": "160", "width": "64", "thickness": "5,0", "shelf_thickness": "8,4"},
+        {"number": "18П", "height": "180", "width": "70", "thickness": "5,1", "shelf_thickness": "8,7"},
+        {"number": "20П", "height": "200", "width": "76", "thickness": "5,2", "shelf_thickness": "9,0"},
+        {"number": "24П", "height": "240", "width": "90", "thickness": "5,6", "shelf_thickness": "10,0"},
+        {"number": "27П", "height": "270", "width": "95", "thickness": "6,0", "shelf_thickness": "10,5"},
+        {"number": "30П", "height": "300", "width": "100", "thickness": "6,5", "shelf_thickness": "11,0"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "//": "СОРТАМЕНТ: Полоса горячекатаная общего назначения - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "accuracy_classes - точность прокатки: ВТ1, ВТ2, ВТ3 (обычная)",
+  "//": "heat_treatment_suffix - суффикс термообработки: -ТО, -ОТ или пусто",
+
+  "product_name": "Полоса",
+
+  "heat_treatment_logic": {
+    "термически обработанная": "-ТО",
+    "отожжённая": "",
+    "термически отожжённая": "-ОТ"
+  },
+
+  "materials": {
+    "45": {
+      "sizes_mm": [
+        {"thickness": "10", "width": "16"},
+        {"thickness": "12", "width": "16"},
+        {"thickness": "12", "width": "20"},
+        {"thickness": "16", "width": "20"},
+        {"thickness": "20", "width": "25"},
+        {"thickness": "20", "width": "30"},
+        {"thickness": "20", "width": "32"},
+        {"thickness": "20", "width": "150"},
+        {"thickness": "25", "width": "32"},
+        {"thickness": "25", "width": "40"},
+        {"thickness": "30", "width": "45"},
+        {"thickness": "30", "width": "150"},
+        {"thickness": "32", "width": "40"},
+        {"thickness": "32", "width": "50"},
+        {"thickness": "40", "width": "50"},
+        {"thickness": "40", "width": "60"},
+        {"thickness": "40", "width": "200"}
+      ],
+      "accuracy_classes": ["ВТ1", "ВТ2", "ВТ3"],
+      "delivery_condition": "термически обработанная",
+      "standard": "ГОСТ 103-2006",
+      "material_standard": "ГОСТ 1050-2013",
+      "designation_components": {
+        "numerator": "{accuracy}-{thickness}*{width} {standard}",
+        "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "40Х": {
+      "sizes_mm": [
+        {"thickness": "12", "width": "16"},
+        {"thickness": "12", "width": "20"},
+        {"thickness": "16", "width": "20"},
+        {"thickness": "16", "width": "25"},
+        {"thickness": "20", "width": "25"},
+        {"thickness": "20", "width": "32"},
+        {"thickness": "20", "width": "40"}
+      ],
+      "accuracy_classes": ["ВТ1", "ВТ2", "ВТ3"],
+      "delivery_condition": "термически обработанная",
+      "standard": "ГОСТ 103-2006",
+      "material_standard": "ГОСТ 4543-2016",
+      "designation_components": {
+        "numerator": "{accuracy}-{thickness}*{width} {standard}",
+        "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "У8А": {
+      "sizes_mm": [
+        {"thickness": "3", "width": "20"},
+        {"thickness": "5", "width": "40"},
+        {"thickness": "8", "width": "80"},
+        {"thickness": "16", "width": "160"},
+        {"thickness": "20", "width": "80"},
+        {"thickness": "20", "width": "160"},
+        {"thickness": "25", "width": "75"},
+        {"thickness": "30", "width": "150"},
+        {"thickness": "40", "width": "160"},
+        {"thickness": "40", "width": "300"},
+        {"thickness": "60", "width": "300"},
+        {"thickness": "80", "width": "300"}
+      ],
+      "accuracy_classes": [],
+      "delivery_condition": "термически обработанная",
+      "standard": "ГОСТ 4405-75",
+      "material_standard": "ГОСТ 1435-99",
+      "designation_components": {
+        "numerator": "{thickness}*{width} {standard}",
+        "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "Р18": {
+      "sizes_mm": [
+        {"thickness": "3", "width": "20"},
+        {"thickness": "4", "width": "20"},
+        {"thickness": "6", "width": "25"},
+        {"thickness": "8", "width": "25"},
+        {"thickness": "10", "width": "16"},
+        {"thickness": "10", "width": "25"},
+        {"thickness": "10", "width": "30"},
+        {"thickness": "12", "width": "25"},
+        {"thickness": "16", "width": "35"},
+        {"thickness": "20", "width": "80"},
+        {"thickness": "20", "width": "100"},
+        {"thickness": "20", "width": "120"},
+        {"thickness": "20", "width": "160"},
+        {"thickness": "25", "width": "80"},
+        {"thickness": "30", "width": "90"},
+        {"thickness": "30", "width": "120"},
+        {"thickness": "30", "width": "150"},
+        {"thickness": "40", "width": "160"},
+        {"thickness": "50", "width": "200"},
+        {"thickness": "60", "width": "240"}
+      ],
+      "accuracy_classes": [],
+      "delivery_condition": "отожжённая",
+      "standard": "ГОСТ 4405-75",
+      "material_standard": "ГОСТ 19265-73",
+      "designation_components": {
+        "numerator": "{thickness}*{width} {standard}",
+        "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    },
+    "ХВГ": {
+      "sizes_mm": [
+        {"thickness": "40", "width": "300"},
+        {"thickness": "80", "width": "300"}
+      ],
+      "accuracy_classes": [],
+      "delivery_condition": "термически отожжённая",
+      "standard": "ГОСТ 4405-75",
+      "material_standard": "ГОСТ 5950-2000",
+      "designation_components": {
+        "numerator": "{thickness}*{width} {standard}",
+        "denominator": "{material}{heat_treatment_suffix} {material_standard}"
+      },
+      "example_designation": "{product_name} {numerator}/{denominator}"
+    }
+  }
+}

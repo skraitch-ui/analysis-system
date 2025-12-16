@@ -1,0 +1,36 @@
+{
+  "//": "СОРТАМЕНТ: Прокат квадратный горячекатаный - ЧЁРНЫЕ МЕТАЛЛЫ",
+  "//": "standard - основной стандарт на сортамент",
+  "//": "accuracy_classes - классы точности прокатки",
+  "//": "example_designation - шаблон обозначения, где {параметры} заменяются значениями",
+  "//": "materials - для каждого материала указываются доступные размеры и состояние поставки",
+
+  "product_name": "Квадрат",
+  "standard": "ГОСТ 2591-2006",
+  "accuracy_classes": ["В1", "В2", "В3", "В4", "В5"],
+
+  "designation_components": {
+    "numerator": "{accuracy}-{size} {standard}",
+    "denominator": "{material} {material_standard}"
+  },
+
+  "example_designation": "{product_name} {numerator}/{denominator}",
+
+  "materials": {
+    "45": {
+      "sizes_mm": ["8", "10", "12", "16", "22", "25", "30", "40", "50", "60", "70", "85", "100"],
+      "delivery_condition": "без термической обработки",
+      "accuracy_classes": ["В1", "В2", "В3", "В4", "В5"]
+    },
+    "40Х": {
+      "sizes_mm": ["10", "12", "16", "20", "25", "32", "63"],
+      "delivery_condition": "без термической обработки",
+      "accuracy_classes": ["В1", "В2", "В3", "В4", "В5"]
+    },
+    "Р18": {
+      "sizes_mm": ["16", "25"],
+      "delivery_condition": "отожжённый",
+      "accuracy_classes": ["В1", "В2", "В3", "В4", "В5"]
+    }
+  }
+}

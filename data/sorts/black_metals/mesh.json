@@ -1,0 +1,164 @@
+{
+  "//": "🎯 ПРОСТАЯ СИСТЕМА ВЫБОРА СЕТОК",
+  "//": " ",
+  "//": "🔧 КАК РАБОТАЕТ:",
+  "//": "1. Пользователь выбирает ТИП СЕТКИ",
+  "//": "2. Система показывает ДОСТУПНЫЕ ДИАМЕТРЫ ПРОВОЛОКИ",
+  "//": "3. Пользователь выбирает ДИАМЕТР ПРОВОЛОКИ",
+  "//": "4. Система автоматически определяет материал и выдаёт обозначение",
+  "//": " ",
+  "//": "📋 ФОРМАТЫ ОБОЗНАЧЕНИЙ:",
+  "//": "• Проволочные: Сетка {type}-{cell_size_3digits}-{wire_diameter_3digits} ГОСТ 3826-82",
+  "//": "• Плетёные: Сетка {type}-Р-{cell_size}-{wire_diameter} ГОСТ 5336-80",
+  "//": "• Рифлёные: Сетка Р{cell_size}-{wire_diameter} ГОСТ 3306-88",
+
+  "product_name": "Сетка",
+
+  "mesh_types": {
+    "wire_woven": {
+      "name": "Сетка проволочная тканая",
+      "standard": "ГОСТ 3826-82",
+      "sizes": {
+        "04": {
+          "cell_size": "0,4",
+          "cell_size_3digits": "040",
+          "wire_diameter": "0,20",
+          "wire_diameter_3digits": "020",
+          "type": "1"
+        },
+        "05": {
+          "cell_size": "0,5",
+          "cell_size_3digits": "050",
+          "wire_diameter": "0,23",
+          "wire_diameter_3digits": "023",
+          "type": "1"
+        },
+        "1": {
+          "cell_size": "1,0",
+          "cell_size_3digits": "100",
+          "wire_diameter": "0,35",
+          "wire_diameter_3digits": "035",
+          "type": "1"
+        },
+        "1,8": {
+          "cell_size": "1,8",
+          "cell_size_3digits": "180",
+          "wire_diameter": "0,55",
+          "wire_diameter_3digits": "055",
+          "type": "1"
+        },
+        "2": {
+          "cell_size": "2,0",
+          "cell_size_3digits": "200",
+          "wire_diameter": "0,50",
+          "wire_diameter_3digits": "050",
+          "type": "2"
+        },
+        "2,5": {
+          "cell_size": "2,5",
+          "cell_size_3digits": "250",
+          "wire_diameter": "0,50",
+          "wire_diameter_3digits": "050",
+          "type": "2"
+        },
+        "3,2": {
+          "cell_size": "3,2",
+          "cell_size_3digits": "320",
+          "wire_diameter": "0,50",
+          "wire_diameter_3digits": "050",
+          "type": "2"
+        },
+        "4": {
+          "cell_size": "4,0",
+          "cell_size_3digits": "400",
+          "wire_diameter": "1,00",
+          "wire_diameter_3digits": "100",
+          "type": "1"
+        },
+        "5": {
+          "cell_size": "5,0",
+          "cell_size_3digits": "500",
+          "wire_diameter": "1,20",
+          "wire_diameter_3digits": "120",
+          "type": "1"
+        },
+        "6": {
+          "cell_size": "6,0",
+          "cell_size_3digits": "600",
+          "wire_diameter": "1,20",
+          "wire_diameter_3digits": "120",
+          "type": "1"
+        },
+        "8": {
+          "cell_size": "8,0",
+          "cell_size_3digits": "800",
+          "wire_diameter": "1,60",
+          "wire_diameter_3digits": "160",
+          "type": "1"
+        },
+        "10": {
+          "cell_size": "10,0",
+          "cell_size_3digits": "1000",
+          "wire_diameter": "2,00",
+          "wire_diameter_3digits": "200",
+          "type": "1"
+        },
+        "12": {
+          "cell_size": "12,0",
+          "cell_size_3digits": "1200",
+          "wire_diameter": "2,00",
+          "wire_diameter_3digits": "200",
+          "type": "1"
+        },
+        "16": {
+          "cell_size": "16,0",
+          "cell_size_3digits": "1600",
+          "wire_diameter": "2,50",
+          "wire_diameter_3digits": "250",
+          "type": "1"
+        }
+      },
+      "example_designation": "Сетка {type}-{cell_size_3digits}-{wire_diameter_3digits} ГОСТ 3826-82"
+    },
+
+    "steel_woven": {
+      "name": "Сетка стальная плетёная",
+      "standard": "ГОСТ 5336-80",
+      "sizes": {
+        "5": {
+          "cell_size": "5",
+          "wire_diameter": "1,2",
+          "type": "1"
+        },
+        "10": {
+          "cell_size": "10",
+          "wire_diameter": "1,2",
+          "type": "1"
+        },
+        "15": {
+          "cell_size": "15",
+          "wire_diameter": "1,6",
+          "type": "1"
+        },
+        "20": {
+          "cell_size": "20",
+          "wire_diameter": "2,6",
+          "type": "1"
+        }
+      },
+      "example_designation": "Сетка {type}-Р-{cell_size}-{wire_diameter} ГОСТ 5336-80"
+    },
+
+    "steel_crimped": {
+      "name": "Сетка рифлёная стальная",
+      "standard": "ГОСТ 3306-88",
+      "sizes": {
+        "45": {
+          "cell_size": "45",
+          "wire_diameter": "5,6"
+        }
+      },
+      "example_designation": "Сетка Р{cell_size}-{wire_diameter} ГОСТ 3306-88"
+    }
+  }
+}
